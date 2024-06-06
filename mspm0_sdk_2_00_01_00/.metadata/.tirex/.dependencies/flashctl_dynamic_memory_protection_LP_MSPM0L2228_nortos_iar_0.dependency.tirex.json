@@ -1,0 +1,12 @@
+[
+    {
+        "files": [
+            "+startup_mspm0l222x_iar.c -> startup_mspm0l222x_iar.c",
+            "+../LP_MSPM0G3507/README.md -> README.md",
+            "+../flashctl_dynamic_memory_protection.c -> flashctl_dynamic_memory_protection.c",
+            "+../flashctl_dynamic_memory_protection.syscfg -> flashctl_dynamic_memory_protection.syscfg",
+            "+mspm0l2228.icf -> mspm0l2228.icf",
+            "+../README.html -> README.html"
+        ]
+    }
+]

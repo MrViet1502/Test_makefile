@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>步进电机控制库概述 &mdash; Stepper Motor Control User Guide 1.0.0.x documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DRV8411A GUI User Guide" href="drv8411a/DRV8411A_GUI_User_Guide_CN.html" />
+    <link rel="prev" title="Stepper Motor Control User Guide" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Stepper Motor Control User Guide
+          </a>
+              <div class="version">
+                1.0.0.x
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">步进电机控制库概述</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">1. 软件概述</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">1.1 应用层概述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hal">1.2 HAL 模块</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">概述</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">1.3 电机驱动器模块</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">电机驱动器引脚关联</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api">电机驱动器 API</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">1.4 步进库模块</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">概述</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mspm0-driverlib">1.5 MSPM0 DriverLib 概述</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">2. API 指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">3. 已知问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">4. 支持的器件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#drv8411a">DRV8411A</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#drv8889-q1">DRV8889-Q1</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="drv8411a/DRV8411A_GUI_User_Guide_CN.html">DRV8411A GUI User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drv8411a/DRV8411A_Hardware_User_Guide_CN.html">DRV8411A Hardware User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drv8889-q1/DRV8889-Q1_GUI_User_Guide_CN.html">DRV8889-Q1 GUI User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drv8889-q1/DRV8889-Q1_Hardware_User_Guide_CN.html">DRV8889-Q1 Hardware User Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Stepper Motor Control User Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>步进电机控制库概述</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>步进电机控制库概述<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h1>
+<section id="id2">
+<h2>1. 软件概述<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h2>
+<p>步进电机控制库包含三个主要层，分别是应用层、模块层和 MSPM0 DriverLib。</p>
+<figure class="align-default" id="id12">
+<img alt="步进库架构" src="../_images/Library-Architecture.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">步进库架构</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="id3">
+<h3>1.1 应用层概述<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
+<p>用户特定的应用程序（例如 GUI 等）位于该层中。 在这一层，可以配置和使用电机驱动器模块的各种实例。如果用户需要执行任何硬件特定的操作，建议用户使用 HAL 模块中的 API。</p>
+</section>
+<section id="hal">
+<h3>1.2 HAL 模块<a class="headerlink" href="#hal" title="Permalink to this heading">¶</a></h3>
+<section id="id4">
+<h4>概述<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h4>
+<p>HAL（即硬件抽象层）会创建一个抽象层，它提供 用来配置不同引脚和外设的 API。使用 HAL 的目标是抽象处理所有器件特定的配置，从而通过最大程度地减少其他元件所需的更新来简化库到各种硬件的移植。HAL 旨在仅抽象处理应用所需的引脚或外设，这样做是为了使其轻量化，同时仍然具有移植灵活性。</p>
+<p>HAL 旨在将特定数量的引脚或通道与外设关联。为便于理解，我们以 GPIO 为例。HAL 具有枚举 HAL_GPIO_OUT_PIN，其中将所有 GPIO 输出引脚包含为成员，如下所示。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/*! @enum HAL_GPIO_OUT_PIN */
+typedef enum{
+    /*! Index associated to output GPIO PIN 0 */
+    HAL_GPIO_OUT_PIN_0 = 0,
+    /*! Index associated to output GPIO PIN 1 */
+    HAL_GPIO_OUT_PIN_1,
+    /*! Index associated to output GPIO PIN 2 */
+    HAL_GPIO_OUT_PIN_2,
+    /*! Index associated to output GPIO PIN 3 */
+    HAL_GPIO_OUT_PIN_3,
+    /*! Index associated to output GPIO PIN 4 */
+    HAL_GPIO_OUT_PIN_4,
+    /*! Index associated to output GPIO PIN 5 */
+    HAL_GPIO_OUT_PIN_5,
+    /*! Index associated to output GPIO PIN 6 */
+    HAL_GPIO_OUT_PIN_6,
+    /*! Index associated to output GPIO PIN 7 */
+    HAL_GPIO_OUT_PIN_7,
+    /*! Index associated to output GPIO PIN 8 */
+    HAL_GPIO_OUT_PIN_8,
+    /*! Index associated to output GPIO PIN 9 */
+    HAL_GPIO_OUT_PIN_9,
+    /*! Total number of output GPIO pins */
+    HAL_GPIO_OUT_PIN_MAX,
+}HAL_GPIO_OUT_PIN;
+</pre></div>
+</div>
+<p>为了将 HAL GPIO 引脚映射到真实的硬件引脚，我们使用一个由 HAL_GPIO_OUT_PIN 枚举成员进行索引的结构，该结构存储各种成员，如端口、引脚名称等。请参见下面的 gpioOUT 结构，该结构会保存有关端口和引脚的数据。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gpioOUT</span><span class="p">[</span><span class="n">HAL_GPIO_OUT_PIN_0</span><span class="p">]</span><span class="o">.</span><span class="n">iomux</span>   <span class="o">=</span> <span class="n">GENERIC_GPIO_OUT_PINO_0_IOMUX</span><span class="p">;</span>
+<span class="n">gpioOUT</span><span class="p">[</span><span class="n">HAL_GPIO_OUT_PIN_0</span><span class="p">]</span><span class="o">.</span><span class="n">port</span>    <span class="o">=</span> <span class="n">GENERIC_GPIO_OUT_PORT</span><span class="p">;</span>
+<span class="n">gpioOUT</span><span class="p">[</span><span class="n">HAL_GPIO_OUT_PIN_0</span><span class="p">]</span><span class="o">.</span><span class="n">pin</span>     <span class="o">=</span> <span class="n">GENERIC_GPIO_OUT_PINO_0_PIN</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>请注意，GENERIC_GPIO_OUT_PINO_0_PIN 在 TI Sysconfig 生成的文件中定义，具体行如下所示：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define GENERIC_GPIO_OUT_PINO_0_PIN                              (DL_GPIO_PIN_0)</span>
+</pre></div>
+</div>
+<p>因此，HAL_GPIO_OUT_PIN_0 间接引用 DL_GPIO_PIN_0，但这种映射的优点是：由于 TI Sysconfig 控制 GENERIC_GPIO_OUT_PINO_0_PIN 的生成，因此很容易在 TI Sysconfig GUI 中更改引脚，并且 HAL 会自动遵循此更改，而无需用户更改 HAL 层中的任何代码。</p>
+<p>如上所示，当通过 HAL 访问硬件时，我们需要传递 HAL 特定枚举，如 HAL_GPIO_OUT_PIN_0。这些枚举存储在访问 HAL 层的实例中，就电机驱动器 drv8889q1 而言，我们使用分配到 HAL 枚举的引脚来初始化实例，如下面的代码片段所示。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">drv8889q1</span><span class="o">.</span><span class="n">dir</span>               <span class="o">=</span> <span class="n">HAL_GPIO_OUT_PIN_0</span><span class="p">;</span>
+<span class="n">drv8889q1</span><span class="o">.</span><span class="n">drvOff</span>            <span class="o">=</span> <span class="n">HAL_GPIO_OUT_PIN_1</span><span class="p">;</span>
+<span class="n">drv8889q1</span><span class="o">.</span><span class="n">nsleep</span>            <span class="o">=</span> <span class="n">HAL_GPIO_OUT_PIN_2</span><span class="p">;</span>
+<span class="n">drv8889q1</span><span class="o">.</span><span class="n">nfault</span>            <span class="o">=</span> <span class="n">HAL_GPIO_IN_PIN_0</span><span class="p">;</span>
+<span class="n">drv8889q1</span><span class="o">.</span><span class="n">vref</span>              <span class="o">=</span> <span class="n">HAL_DAC_CHANNEL_0</span><span class="p">;</span>
+<span class="n">drv8889q1</span><span class="o">.</span><span class="n">step</span>              <span class="o">=</span> <span class="n">HAL_PWM_CHANNEL_0</span><span class="p">;</span>
+<span class="n">drv8889q1</span><span class="o">.</span><span class="n">spi</span>               <span class="o">=</span> <span class="n">HAL_SPI_CHANNEL_0</span><span class="p">;</span>
+<span class="n">drv8889q1</span><span class="o">.</span><span class="n">spiCS</span>             <span class="o">=</span> <span class="n">HAL_SPI_CS_2</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>现在，如果我们需要将 nSLEEP 引脚设置为高电平，可以使用 API DRV8889Q1_setNSleep() 并通过其传递此 drv8889q1 实例，代码片段如下所示：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">DRV8889Q1_setNSleep</span><span class="p">(</span><span class="n">DRV8889Q1_Instance</span> <span class="o">*</span><span class="n">handle</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">HAL_setGPIOVal</span><span class="p">(</span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">nsleep</span><span class="p">,</span> <span class="n">HAL_GPIO_VALUE_HIGH</span><span class="p">);</span>
+    <span class="o">/*</span> <span class="n">Startup</span> <span class="n">delay</span> <span class="k">for</span> <span class="n">the</span> <span class="n">DRV8889Q1</span> <span class="n">SPI</span> <span class="n">to</span> <span class="n">be</span> <span class="n">ready</span> <span class="o">*/</span>
+    <span class="n">HAL_delayMilliSeconds</span><span class="p">(</span><span class="n">DRV8889Q1_SPI_READY_DELAY_MS</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>当 DRV8889Q1_setNSleep() 与 HAL 层交互时，它会传递 drv8889q1 实例的成员，具体示例如上面的代码片段所示。在该代码片段中，drv8889q1 实例的 nsleep 成员被传递到 HAL 层，这与使用其他 HAL API（例如计时器、SPI、DAC 等）的概念相同。用户可随意扩展 HAL 的 API 以支持微控制器的其他外设和特性，但为确保能轻松迁移到该库的新版本，强烈建议不要修改现有 API。</p>
+</section>
+</section>
+<section id="id5">
+<h3>1.3 电机驱动器模块<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h3>
+<p>电机驱动器模块将所有电机驱动任务抽象为简单的 API，如启动电机、停止电机、设置速度等。该层的理念是独立于硬件并使用 HAL API 来执行硬件任务。</p>
+<section id="id6">
+<h4>电机驱动器引脚关联<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h4>
+<p>在使用电机驱动器模块之前，用户需要指定映射到电机驱动器实例的 HAL 枚举，请参阅下面的代码片段。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">Assign</span> <span class="n">the</span> <span class="n">pins</span> <span class="n">specific</span> <span class="k">for</span> <span class="n">the</span> <span class="n">DRV</span> <span class="o">*/</span>
+<span class="n">drv8411a</span><span class="o">.</span><span class="n">ain1</span>               <span class="o">=</span> <span class="n">HAL_GPIO_OUT_PIN_0</span><span class="p">;</span>
+<span class="n">drv8411a</span><span class="o">.</span><span class="n">ain2</span>               <span class="o">=</span> <span class="n">HAL_GPIO_OUT_PIN_1</span><span class="p">;</span>
+<span class="n">drv8411a</span><span class="o">.</span><span class="n">bin1</span>               <span class="o">=</span> <span class="n">HAL_GPIO_OUT_PIN_2</span><span class="p">;</span>
+<span class="n">drv8411a</span><span class="o">.</span><span class="n">bin2</span>               <span class="o">=</span> <span class="n">HAL_GPIO_OUT_PIN_3</span><span class="p">;</span>
+<span class="n">drv8411a</span><span class="o">.</span><span class="n">nfault</span>             <span class="o">=</span> <span class="n">HAL_GPIO_IN_PIN_0</span><span class="p">;</span>
+<span class="n">drv8411a</span><span class="o">.</span><span class="n">aipropi</span>            <span class="o">=</span> <span class="n">HAL_ADC_CHANNEL_0</span><span class="p">;</span>
+<span class="n">drv8411a</span><span class="o">.</span><span class="n">bipropi</span>            <span class="o">=</span> <span class="n">HAL_ADC_CHANNEL_1</span><span class="p">;</span>
+<span class="n">drv8411a</span><span class="o">.</span><span class="n">vref</span>               <span class="o">=</span> <span class="n">HAL_DAC_CHANNEL_0</span><span class="p">;</span>
+<span class="n">drv8411a</span><span class="o">.</span><span class="n">indexerTimer</span>       <span class="o">=</span> <span class="n">HAL_TIM_CHANNEL_0</span><span class="p">;</span>
+<span class="n">drv8411a</span><span class="o">.</span><span class="n">ADCTriggerTimer</span>    <span class="o">=</span> <span class="n">HAL_TIM_CHANNEL_1</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="api">
+<h4>电机驱动器 API<a class="headerlink" href="#api" title="Permalink to this heading">¶</a></h4>
+<p>电机驱动器模块提供简单的 API，用户可以将其与电机驱动器模块的实例一同使用。</p>
+<p>电机驱动器层 API 还处理电机驱动器特定逻辑，同时保持 API 通用，因此用户可以使用不同的电机驱动器，而不必担心内部逻辑有任何差异。例如，下面是处理 H 桥驱动状态的 DRV8411A_setPWMDrive API 的一部分。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">__STATIC_INLINE</span> <span class="n">void</span> <span class="n">DRV8411A_setPWMDrive</span><span class="p">(</span>
+                                <span class="n">HAL_GPIO_OUT_PIN</span> <span class="n">in1</span><span class="p">,</span> <span class="n">HAL_GPIO_OUT_PIN</span> <span class="n">in2</span><span class="p">,</span>
+                                <span class="n">STEPPER_DRIVE</span> <span class="n">drive</span><span class="p">,</span> <span class="n">DRV8411A_DECAY</span> <span class="n">decayMode</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">HAL_GPIO_VALUE</span> <span class="n">in1GpioVal</span>  <span class="o">=</span> <span class="n">HAL_GPIO_VALUE_LOW</span><span class="p">;</span>
+    <span class="n">HAL_GPIO_VALUE</span> <span class="n">in2GpioVal</span>  <span class="o">=</span> <span class="n">HAL_GPIO_VALUE_LOW</span><span class="p">;</span>
+    <span class="n">switch</span> <span class="p">(</span><span class="n">drive</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">case</span> <span class="n">STEPPER_DRIVE_DISABLE</span><span class="p">:</span>
+            <span class="n">in1GpioVal</span> <span class="o">=</span> <span class="n">HAL_GPIO_VALUE_LOW</span><span class="p">;</span>
+            <span class="n">in2GpioVal</span> <span class="o">=</span> <span class="n">HAL_GPIO_VALUE_LOW</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="n">STEPPER_DRIVE_DECAY</span><span class="p">:</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">decayMode</span> <span class="o">==</span> <span class="n">DRV8411A_DECAY_SLOW</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">in1GpioVal</span> <span class="o">=</span> <span class="n">HAL_GPIO_VALUE_HIGH</span><span class="p">;</span>
+                <span class="n">in2GpioVal</span> <span class="o">=</span> <span class="n">HAL_GPIO_VALUE_HIGH</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">in1GpioVal</span> <span class="o">=</span> <span class="n">HAL_GPIO_VALUE_LOW</span><span class="p">;</span>
+                <span class="n">in2GpioVal</span> <span class="o">=</span> <span class="n">HAL_GPIO_VALUE_LOW</span><span class="p">;</span>
+            <span class="p">}</span>
+</pre></div>
+</div>
+<p>请注意，在上面的代码片段中，在 GPIO 中设置控制输出以设置驱动状态的任务对于每个驱动器模块来说可能有所不同，但是，由于我们使用由电机驱动器模块处理的通用驱动状态来基于其内部逻辑设置正确的输出状态，因此步进库能够用于多个电机驱动器模块。</p>
+</section>
+</section>
+<section id="id7">
+<h3>1.4 步进库模块<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h3>
+<section id="id8">
+<h4>概述<a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h4>
+<p>步进库包含用于步进电机控制的通用算法。当使用多个电机驱动器模块时，该层有助于减小代码大小。</p>
+<p>该层由电机驱动器模块使用，用户不应直接使用该层的 API。可通过电机驱动器层与相应实例一同访问步进库，该层会配置通用算法并使用步进库 API。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">DRV8411A_setStepMode</span><span class="p">(</span><span class="n">DRV8411A_Instance</span> <span class="o">*</span><span class="n">handle</span><span class="p">,</span> <span class="n">DRV8411A_STEP</span> <span class="n">stepMode</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">stepMode</span> <span class="o">==</span> <span class="n">DRV8411A_STEP_FULL_STEP</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">handle</span><span class="o">-&gt;</span><span class="n">stepMode</span> <span class="o">=</span> <span class="n">stepMode</span><span class="p">;</span>
+        <span class="n">STEPPER_setIndexerIncVal</span><span class="p">(</span><span class="o">&amp;</span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">indexer</span><span class="p">,</span> <span class="n">STEPPER_STEP_INC_DEC_FULL_STEP</span><span class="p">);</span>
+        <span class="n">DRV8411A_setSpeed</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">handle</span><span class="o">-&gt;</span><span class="n">setFreq</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">stepMode</span> <span class="o">==</span> <span class="n">DRV8411A_STEP_HALF_STEP_NC</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">handle</span><span class="o">-&gt;</span><span class="n">stepMode</span> <span class="o">=</span> <span class="n">stepMode</span><span class="p">;</span>
+        <span class="n">STEPPER_setIndexerIncVal</span><span class="p">(</span><span class="o">&amp;</span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">indexer</span><span class="p">,</span> <span class="n">STEPPER_STEP_INC_DEC_HALF_STEP</span><span class="p">);</span>
+        <span class="n">DRV8411A_setSpeed</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">handle</span><span class="o">-&gt;</span><span class="n">setFreq</span><span class="p">);</span>
+        <span class="n">STEPPER_setStepType</span><span class="p">(</span><span class="o">&amp;</span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">indexer</span><span class="p">,</span> <span class="n">STEPPER_STEP_TYPE_NONCIR</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">STEPPER_setStepType</span><span class="p">(</span><span class="o">&amp;</span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">indexer</span><span class="p">,</span> <span class="n">STEPPER_STEP_TYPE_CIR</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>在上面的代码中，DRV8411A 仅会将分度器递增或递减值设置为 STEPPER_STEP_INC_DEC_FULL_STEP 或 STEPPER_STEP_INC_DEC_HALF_STEP。但是，还有更多值需要设置，但由于 DRV8411A 不支持这些模式，因此不会使用它们。</p>
+<p>此外，步进库并不了解使用其 API 的电机驱动器模块的驱动器接口，即是 PWM 还是相位使能接口。步进库会生成通用驱动状态，电机驱动器模块根据 PWM 或相位使能逻辑将其转换为控制输出，这一点也在“电机驱动器 API”部分中进行了讨论。</p>
+</section>
+</section>
+<section id="mspm0-driverlib">
+<h3>1.5 MSPM0 DriverLib 概述<a class="headerlink" href="#mspm0-driverlib" title="Permalink to this heading">¶</a></h3>
+<p>MSPM0 DriverLib 是一组功能齐全的 API，用于配置、控制和操作 MSPM0 平台的硬件外设。更多相关信息，请参阅 DriverLib 文档。</p>
+</section>
+</section>
+<section id="id9">
+<h2>2. API 指南<a class="headerlink" href="#id9" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="../../doxygen/api_guide/html/index.html">步进库 API 指南</a></p></li>
+</ul>
+</section>
+<section id="id10">
+<h2>3. 已知问题<a class="headerlink" href="#id10" title="Permalink to this heading">¶</a></h2>
+<p>1.在离线应用程序中，GUI 图有时不起作用。 2.离线应用程序中会出现程序加载失败的问题。 3.目前仅支持 CCS IDE。</p>
+</section>
+<section id="id11">
+<h2>4. 支持的器件<a class="headerlink" href="#id11" title="Permalink to this heading">¶</a></h2>
+<section id="drv8411a">
+<h3>DRV8411A<a class="headerlink" href="#drv8411a" title="Permalink to this heading">¶</a></h3>
+<p>支持的 MSPM0 LaunchPad</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.ti.com/tool/LP-MSPM0L1306">LP-MSPM0L1306</a></p></li>
+</ul>
+<p>链接</p>
+<ul class="simple">
+<li><p><a class="reference external" href="drv8411a/DRV8411A_Hardware_User_Guide_CN.html">硬件用户指南</a></p></li>
+<li><p><a class="reference external" href="drv8411a/DRV8411A_GUI_User_Guide_CN.html">GUI 用户指南</a></p></li>
+<li><p><a class="reference external" href="https://dev.ti.com/gallery/view/TIMSPGC/MSPM0L-DRV8411A-EVM-GUI">MSPM0L1306-DRV8411A-EVM-GUI</a></p></li>
+</ul>
+</section>
+<section id="drv8889-q1">
+<h3>DRV8889-Q1<a class="headerlink" href="#drv8889-q1" title="Permalink to this heading">¶</a></h3>
+<p>支持的 MSPM0 LaunchPad</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.ti.com/tool/LP-MSPM0L1306">LP-MSPM0L1306</a></p></li>
+</ul>
+<p>链接</p>
+<ul class="simple">
+<li><p><a class="reference external" href="drv8889-q1/DRV8889-Q1_Hardware_User_Guide_CN.html">硬件用户指南</a></p></li>
+<li><p><a class="reference external" href="drv8889-q1/DRV8889-Q1_GUI_User_Guide_CN.html">GUI 用户指南</a></p></li>
+<li><p><a class="reference external" href="https://dev.ti.com/gallery/view/TIMSPGC/MSPM0L-DRV8889Q1-EVM-GUI">MSPM0L1306-DRV8889Q1-EVM-GUI</a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Stepper Motor Control User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="drv8411a/DRV8411A_GUI_User_Guide_CN.html" class="btn btn-neutral float-right" title="DRV8411A GUI User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">1995-2023, Texas Instruments Incorporated. All rights reserved</a>, Texas Instruments Incorporated. All rights reserved. <br/>
+      <a href="https://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="https://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="https://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="https://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

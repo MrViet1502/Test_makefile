@@ -1,0 +1,10 @@
+[
+    {
+        "files": [
+            "+../flashctl_dynamic_memory_protection.c -> flashctl_dynamic_memory_protection.c",
+            "+../flashctl_dynamic_memory_protection.syscfg -> flashctl_dynamic_memory_protection.syscfg",
+            "+../LP_MSPM0G3507/README.md -> LP_MSPM0G3507/README.md",
+            "+../README.html -> README.html"
+        ]
+    }
+]
